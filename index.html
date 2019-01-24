@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="time">
+            Llamas are awesome!
+        </div>
+        <script>
+            var currentTime = null,
+                currentYear = null,
+                currentMonth = null,
+                currentDate = null,
+                currentDay = null,
+                currentHours = null,
+                currentMinutes = null,
+                currentSeconds = null;
+
+            function doubleDigits(number) {
+                return (number < 9 ? "0" : "") + number;
+            }
+
+            function showTime() {
+                currentTime = new Date();
+                currentYear = currentTime.getFullYear(); // getYear depricated
+                currentMonth = currentTime.getMonth() + 1;// cuz of american counting = starting from 0;
+                currentDate = currentTime.getDate();
+                currentDay = currentTime.getDay(); // enum needed!
+                currentHours = currentTime.getHours();
+                currentMinutes = currentTime.getMinutes();
+                currentSeconds = currentTime.getSeconds();
+
+                document.getElementById("time").innerHTML = " Day: " + currentDay + " " + doubleDigits(currentDate) + "/" + doubleDigits(currentMonth) + "/" + currentYear + " " 
+                    + doubleDigits(currentHours) + ":" + doubleDigits(currentMinutes) + ":" + doubleDigits(currentSeconds);
+                
+                setTimeout("showTime()", 1000); // co jedną sekundę
+            }
+            showTime();
+        </script>
+    </body>
+</html>
