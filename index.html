@@ -22,7 +22,7 @@
             Object.freeze(DaysEnum)
 
             function doubleDigits(number) {
-                return (number < 9 ? "0" : "") + number;
+                return (number < 10 ? "0" : "") + number;
             }
 
             function showTime() {
@@ -35,9 +35,9 @@
                 currentMinutes = currentTime.getMinutes();
                 currentSeconds = currentTime.getSeconds();
 
-                document.getElementById("time").innerHTML = " Day: " + DaysEnum[currentDay - 1] + " " + doubleDigits(currentDate) + "/" + doubleDigits(currentMonth) + "/" + currentYear + " "
-                    + doubleDigits(currentHours) + ":" + doubleDigits(currentMinutes) + ":" + doubleDigits(currentSeconds);
-
+                document.getElementById("time").innerHTML = `Day: ${DaysEnum[currentDay - 1]}\n${doubleDigits(currentDate)}/${doubleDigits(currentMonth)}/${currentYear} 
+                    ${doubleDigits(currentHours)}:${doubleDigits(currentMinutes)}:${doubleDigits(currentSeconds)}`; 
+                
                 setTimeout("showTime()", 1000); // every each second
             }
             showTime();
