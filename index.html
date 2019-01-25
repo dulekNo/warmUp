@@ -2,6 +2,7 @@
     <head>
 
     </head>
+
     <body>
         <div id="time">
             Llamas are awesome!
@@ -15,6 +16,10 @@
                 currentHours = null,
                 currentMinutes = null,
                 currentSeconds = null;
+
+            // enum day
+            var DaysEnum = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            Object.freeze(DaysEnum)
 
             function doubleDigits(number) {
                 return (number < 9 ? "0" : "") + number;
@@ -30,12 +35,13 @@
                 currentMinutes = currentTime.getMinutes();
                 currentSeconds = currentTime.getSeconds();
 
-                document.getElementById("time").innerHTML = " Day: " + currentDay + " " + doubleDigits(currentDate) + "/" + doubleDigits(currentMonth) + "/" + currentYear + " " 
+                document.getElementById("time").innerHTML = " Day: " + DaysEnum[currentDay - 1] + " " + doubleDigits(currentDate) + "/" + doubleDigits(currentMonth) + "/" + currentYear + " "
                     + doubleDigits(currentHours) + ":" + doubleDigits(currentMinutes) + ":" + doubleDigits(currentSeconds);
-                
-                setTimeout("showTime()", 1000); // co jedną sekundę
+
+                setTimeout("showTime()", 1000); // every each second
             }
             showTime();
         </script>
     </body>
+
 </html>
